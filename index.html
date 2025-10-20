@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crash Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="top-bar">
+        <div class="logo">Crash<span>Play</span></div>
+        <nav class="nav-links">
+          <button class="nav-link active">Crash</button>
+          <button class="nav-link">Roulette</button>
+          <button class="nav-link">Slots</button>
+          <button class="nav-link">Profile</button>
+        </nav>
+        <div class="user-chip">
+          <div class="chip-label">Balance</div>
+          <div class="chip-value" id="balance">$1,000.00</div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="game-card">
+          <header class="card-header">
+            <div>
+              <h1>Crash Prototype</h1>
+              <p class="subtitle">Cash out before the multiplier crashes.</p>
+            </div>
+            <div class="status" id="status" role="status" aria-live="polite">
+              Waiting for bet…
+            </div>
+          </header>
+          <div class="graph" id="graph">
+            <svg viewBox="0 0 600 320" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#6c5ce7" />
+                  <stop offset="100%" stop-color="#a66bff" />
+                </linearGradient>
+              </defs>
+              <polyline id="multiplier-line" points="0,320" />
+            </svg>
+            <div class="multiplier" id="multiplier">1.00×</div>
+          </div>
+          <div class="actions">
+            <label class="field">
+              <span>Bet Amount</span>
+              <div class="field-control">
+                <span class="currency">$</span>
+                <input type="number" id="bet" min="1" max="5000" value="50" />
+              </div>
+            </label>
+            <label class="field">
+              <span>Auto Cashout</span>
+              <div class="field-control">
+                <input
+                  type="number"
+                  id="autoCashout"
+                  min="1"
+                  step="0.1"
+                  placeholder="None"
+                />
+                <span class="unit">×</span>
+              </div>
+            </label>
+            <button id="actionButton" class="primary">Start Round</button>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel">
+            <h2>Last Results</h2>
+            <ul id="history" class="history">
+              <li class="placeholder">No rounds yet. Place your first bet!</li>
+            </ul>
+          </section>
+          <section class="panel">
+            <h2>How it works</h2>
+            <p>
+              Press <strong>Start Round</strong> to place your bet and watch the multiplier
+              climb. Tap <strong>Cash Out</strong> any time before the crash to lock in your
+              winnings.
+            </p>
+          </section>
+        </aside>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
